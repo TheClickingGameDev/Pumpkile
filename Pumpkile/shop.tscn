@@ -1,0 +1,159 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb88jv4yry7ks"]
+
+[ext_resource type="Script" path="res://Scripts/shop.gd" id="1_5wyrn"]
+[ext_resource type="FontFile" uid="uid://1adpblvj8vmo" path="res://Assets/PixelFont.ttf" id="2_7wmsr"]
+[ext_resource type="Texture2D" uid="uid://dwewb2ob3aikj" path="res://Assets/Button.png" id="3_xvhkp"]
+[ext_resource type="Texture2D" uid="uid://cqm4sedw87ttq" path="res://Assets/Cursor.png" id="4_evtn8"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5wyrn")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.329412, 0.368627, 0.498039, 1)
+
+[node name="ShopLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.443137, 0.682353, 0.54902, 1)
+theme_override_fonts/font = ExtResource("2_7wmsr")
+theme_override_font_sizes/font_size = 32
+text = "shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeMultiplierButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.159722
+anchor_right = 0.8
+anchor_bottom = 0.381944
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("../UpgradeAutomationButton")
+action_mode = 0
+button_mask = 0
+texture_normal = ExtResource("3_xvhkp")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="UpgradeMultiplierLabel" type="Label" parent="UpgradeMultiplierButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.443137, 0.682353, 0.54902, 1)
+theme_override_fonts/font = ExtResource("2_7wmsr")
+theme_override_font_sizes/font_size = 32
+text = "clicking:
+100"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="UpgradeAutomationButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.493056
+anchor_right = 0.8
+anchor_bottom = 0.715278
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../UpgradeMultiplierButton")
+focus_neighbor_bottom = NodePath("../BackButton")
+action_mode = 0
+button_mask = 0
+texture_normal = ExtResource("3_xvhkp")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="UpgradeAutomationLabel" type="Label" parent="UpgradeAutomationButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../../UpgradeMultiplierButton")
+theme_override_colors/font_color = Color(0.443137, 0.682353, 0.54902, 1)
+theme_override_fonts/font = ExtResource("2_7wmsr")
+theme_override_font_sizes/font_size = 32
+text = "automation:
+500
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BackButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.833333
+anchor_right = 0.65
+anchor_bottom = 0.944444
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_top = NodePath("../UpgradeAutomationButton")
+action_mode = 0
+button_mask = 0
+texture_normal = ExtResource("3_xvhkp")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="BackLabel" type="Label" parent="BackButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0625001
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.443137, 0.682353, 0.54902, 1)
+theme_override_fonts/font = ExtResource("2_7wmsr")
+theme_override_font_sizes/font_size = 32
+text = "back"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Cursor" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03125
+anchor_top = 0.229167
+anchor_right = 0.13125
+anchor_bottom = 0.340278
+texture = ExtResource("4_evtn8")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[connection signal="focus_entered" from="UpgradeMultiplierButton" to="." method="_on_upgrade_multiplier_button_focus_entered"]
+[connection signal="pressed" from="UpgradeMultiplierButton" to="." method="_on_upgrade_multiplier_button_pressed"]
+[connection signal="focus_entered" from="UpgradeAutomationButton" to="." method="_on_upgrade_automation_button_focus_entered"]
+[connection signal="pressed" from="UpgradeAutomationButton" to="." method="_on_upgrade_automation_button_pressed"]
+[connection signal="focus_entered" from="BackButton" to="." method="_on_back_button_focus_entered"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

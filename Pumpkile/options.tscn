@@ -1,0 +1,180 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg1u06pi5d46e"]
+
+[ext_resource type="Script" path="res://Scripts/options.gd" id="1_56llb"]
+[ext_resource type="Texture2D" uid="uid://dwewb2ob3aikj" path="res://Assets/Button.png" id="2_gunvf"]
+[ext_resource type="FontFile" uid="uid://1adpblvj8vmo" path="res://Assets/PixelFont.ttf" id="4_4p6du"]
+[ext_resource type="Texture2D" uid="uid://cqm4sedw87ttq" path="res://Assets/Cursor.png" id="4_vkcna"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_56llb")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.329412, 0.368627, 0.498039, 1)
+
+[node name="FullscreenButton" type="TextureButton" parent="Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.275
+anchor_top = 0.0486111
+anchor_right = 0.725
+anchor_bottom = 0.215278
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_bottom = NodePath("../StatsButton")
+action_mode = 0
+button_mask = 0
+texture_normal = ExtResource("2_gunvf")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="FullscreenLabel" type="Label" parent="Background/FullscreenButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.443137, 0.682353, 0.54902, 1)
+theme_override_fonts/font = ExtResource("4_4p6du")
+theme_override_font_sizes/font_size = 32
+text = "fullscreen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatsButton" type="TextureButton" parent="Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -96.0
+offset_right = 24.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_top = NodePath("../FullscreenButton")
+focus_neighbor_bottom = NodePath("../SaveButton")
+action_mode = 0
+button_mask = 0
+texture_normal = ExtResource("2_gunvf")
+stretch_mode = 0
+
+[node name="StatsLabel" type="Label" parent="Background/StatsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.443137, 0.682353, 0.54902, 1)
+theme_override_fonts/font = ExtResource("4_4p6du")
+theme_override_font_sizes/font_size = 32
+text = "stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SaveButton" type="TextureButton" parent="Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -64.0
+offset_right = 24.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_top = NodePath("../StatsButton")
+focus_neighbor_bottom = NodePath("../BackButton")
+action_mode = 0
+button_mask = 0
+texture_normal = ExtResource("2_gunvf")
+stretch_mode = 0
+
+[node name="SaveLabel" type="Label" parent="Background/SaveButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.443137, 0.682353, 0.54902, 1)
+theme_override_fonts/font = ExtResource("4_4p6du")
+theme_override_font_sizes/font_size = 32
+text = "save"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="Background"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_top = NodePath("../SaveButton")
+action_mode = 0
+button_mask = 0
+texture_normal = ExtResource("2_gunvf")
+stretch_mode = 0
+
+[node name="BackLabel" type="Label" parent="Background/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.443137, 0.682353, 0.54902, 1)
+theme_override_fonts/font = ExtResource("4_4p6du")
+theme_override_font_sizes/font_size = 32
+text = "back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cursor" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1375
+anchor_top = 0.0833333
+anchor_right = 0.2375
+anchor_bottom = 0.194444
+texture = ExtResource("4_vkcna")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[connection signal="focus_entered" from="Background/FullscreenButton" to="." method="_on_fullscreen_button_focus_entered"]
+[connection signal="pressed" from="Background/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
+[connection signal="focus_entered" from="Background/StatsButton" to="." method="_on_stats_button_focus_entered"]
+[connection signal="pressed" from="Background/StatsButton" to="." method="_on_stats_button_pressed"]
+[connection signal="focus_entered" from="Background/SaveButton" to="." method="_on_save_button_focus_entered"]
+[connection signal="pressed" from="Background/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="focus_entered" from="Background/BackButton" to="." method="_on_back_button_focus_entered"]
+[connection signal="pressed" from="Background/BackButton" to="." method="_on_back_button_pressed"]
